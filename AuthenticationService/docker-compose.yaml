@@ -1,9 +1,9 @@
 name: NodeService
 
 services:
-  node-service:
-    image: hatohui/node-service:latest
-    container_name: node_service
+  FCJ_auth_service:
+    image: FCJ_auth_service:latest
+    container_name: FCJ_auth_service
     build: .
     working_dir: /app
     volumes:
