@@ -1,0 +1,24 @@
+name: authorization-service
+
+services:
+  authorization-service:
+    image: hatohui/authorization-service:latest
+    build: .
+    container_name: authorization-service
+    ports:
+      - "7000:7000"
+    restart: always
+
+  authorization-db:
+    image: postgres:17
+    container_name: authorization-db
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: authorizationdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - auth_db_data:/var/lib/postgresql/data
+      - db:/docker-entrypoint-initdb.d
+    restart: always
